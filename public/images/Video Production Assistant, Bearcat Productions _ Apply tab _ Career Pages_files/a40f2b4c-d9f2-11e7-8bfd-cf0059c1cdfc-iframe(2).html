@@ -1,0 +1,64 @@
+
+<!-- saved from url=(1146)https://jsv3.recruitics.com/a40f2b4c-d9f2-11e7-8bfd-cf0059c1cdfc-iframe?e=%7B%22viewer%22%3A%7B%22v2_first%22%3Anull%2C%22v2_local%22%3Anull%2C%22v3_first%22%3A%22ca748019412211ee9012e7305f3ed61c6cd7041b0b674a77898266fa8e4002db%22%2C%22v3_first_samesite%22%3A%22ca748019412211ee9012e7305f3ed61c6cd7041b0b674a77898266fa8e4002db%22%2C%22v3_local%22%3A%22ca748019412211ee9012e7305f3ed61c6cd7041b0b674a77898266fa8e4002db%22%2C%22v3_param%22%3Anull%7D%2C%22referrer%22%3A%22https%3A%2F%2Fwww.nwmissouri.edu%2F%22%2C%22title%22%3A%22Student%20Employment%20%7C%20Employment%20Opportunities%22%2C%22eventType%22%3A%22jobview%22%2C%22pageType%22%3A%22Job%20Details%20(governmentjobs.com)%22%2C%22scriptId%22%3A%22a40f2b4c-d9f2-11e7-8bfd-cf0059c1cdfc%22%2C%22partnerId%22%3A%22faefc615-d37d-11e7-b7f1-1d503d7533d2%22%2C%22cid%22%3A%221315%22%2C%22versionId%22%3A%22017a2c14-7583-11e9-a2a4-e399900f14a5%22%2C%22jobId%22%3A%224264263%22%2C%22uri%22%3A%22https%3A%2F%2Fwww.schooljobs.com%2Fcareers%2Fnwmissouri%2Fjobs%2F4264263%2Fvideo-production-assistant-bearcat-productions%22%2C%22hasCustomJs%22%3Afalse%2C%22anonymizeIp%22%3Afalse%2C%22nvp%22%3A%7B%7D%7D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>IFrame</title></head>
+<body><script>var rx = rx || {};
+rx._ = rx._ || {};
+
+/**
+ *  Logging wrapper. Addresses lack of "console" support in IE9.
+ */
+rx._.log = function(message,a1) {
+    if (window.rx_debug) {
+        window.rx_debug += "INFO: " + message + "\n";
+    } else {
+        window.rx_debug = "INFO: " + message + "\n";
+    }
+    if (false && window.console) {
+        if (typeof a1 == "undefined"){
+            window.console.log(message);
+        } else {
+            window.console.log(message,a1);
+        }
+    }
+}
+
+/**
+ *  Logging wrapper. Addresses lack of "console" support in IE9.
+ */
+rx._.error = function(message,a1) {
+    if (window.rx_debug) {
+        window.rx_debug += "ERROR: " + message + "\n";
+    } else {
+        window.rx_debug = "ERROR: " + message + "\n";
+    }
+    if (false && window.console) {
+        if (typeof a1 == "undefined"){
+            window.console.error(message);
+        } else {
+            window.console.error(message,a1);
+        }
+    }
+};
+
+// ---------------------------------------------------------------------------------------------------------------------
+// SEND EVENT FROM I-FRAME
+// ---------------------------------------------------------------------------------------------------------------------
+rx._.log("Setting up iFrame logic for jsv3.recruitics.com");
+rx._.payload = {"viewer":{"v2_first":null,"v2_local":null,"v3_first":"ca748019412211ee9012e7305f3ed61c6cd7041b0b674a77898266fa8e4002db","v3_first_samesite":"ca748019412211ee9012e7305f3ed61c6cd7041b0b674a77898266fa8e4002db","v3_local":"ca748019412211ee9012e7305f3ed61c6cd7041b0b674a77898266fa8e4002db","v3_param":null},"referrer":"https://www.nwmissouri.edu/","title":"Student Employment | Employment Opportunities","eventType":"jobview","pageType":"Job Details (governmentjobs.com)","scriptId":"a40f2b4c-d9f2-11e7-8bfd-cf0059c1cdfc","partnerId":"faefc615-d37d-11e7-b7f1-1d503d7533d2","cid":"1315","versionId":"017a2c14-7583-11e9-a2a4-e399900f14a5","jobId":"4264263","uri":"https://www.schooljobs.com/careers/nwmissouri/jobs/4264263/video-production-assistant-bearcat-productions","hasCustomJs":false,"anonymizeIp":false,"nvp":{}};
+rx._.sendPayload = function(fn) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            fn(xhttp.responseText);
+        }
+    }
+    xhttp.open("POST", "//jsv3.recruitics.com/event.txt", true); // async post to event.txt
+    xhttp.send(JSON.stringify(rx._.payload)); // add the payload and send it
+};
+rx._.handleResponse = function(viewerId){
+    if (window.parent && window.parent.postMessage) {
+        window.parent.postMessage("rx_viewer=" + viewerId, "*");
+    }
+};
+rx._.sendPayload(rx._.handleResponse);</script>
+</body></html>

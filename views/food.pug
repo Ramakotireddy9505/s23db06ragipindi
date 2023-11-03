@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  .container-fluid
+    .row
+      - for (let food of results)
+        .col-sm-2
+          h2= food.food_name
+          p Food Type: #{food.food_type}
+          p Origin: #{food.origin}
+          p Rating: #{food.rating}
+  br
+  h5= 'Buy'
+
+  div(class="container-fluid")
+    each food, index in results
+      div(class="row", onclick=`buy(${index})`)
+        div(class="col-sm-2") <br>food #{index}: #{food.food_type} Address:#{food.address} Rating:#{food.rating}
+  script.
+    function buy(price){
+      alert('You purchased item ' + price)
+    }
