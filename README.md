@@ -1,7 +1,7 @@
 # s23db06ragipindi
 local repo created
 
-[Render page link](https://f23wb06ragipindi.onrender.com/)
+[Render page link](https://s23db06ragipindi.onrender.com/)
 
 FoodsData
 - Food_type(string)
