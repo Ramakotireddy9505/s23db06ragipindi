@@ -1,4 +1,4 @@
-const Costume = require('../models/costume');
+const Costume = require('../models/food');
 // var express = require('express');
 //const costume_controlers= require('../controllers/costume');
 // var router = express.Router();

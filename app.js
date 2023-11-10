@@ -33,7 +33,7 @@ var usersRouter = require('./routes/users');
 const foodRoute = require('./routes/food');
 const boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
-var costumeRouter = require('./models/costume');
+var costumeRouter = require('./models/food');
 var resourceRouter = require('./routes/resource')
 
 var app = express();

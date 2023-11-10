@@ -1,4 +1,4 @@
-var Costume = require('../models/costume');
+var Costume = require('../models/food');
 // List of all Costumes
 exports.costume_list = async function (req, res) {
     try {
