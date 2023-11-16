@@ -3,45 +3,51 @@ extends layout
 block content
   h1= title
 
-  - let costumeid = result._id
-  - let costume_type = result.costume_type
-  - let costumecost = result.cost
-  - let costumesize = result.size
+  // Add Bootstrap CDN link in the head
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
 
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{costumeid}
+  if (result == null)
+    h2 No instance to update
+  else
+    - let costumeid = result._id
+    - let costume_type = result.costume_type
+    - let costumecost = result.cost
+    - let costumesize = result.size
 
-  - let actionid = "/resource/food/" + costumeid
-  form(id='FoodForm', action= actionid, method="PUT")
-    div.form-group
-      label.costumeAttr(for='costume_type') Food type
-      input#costume_type(type='text', name='costume_type', value= costume_type )
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{costumeid}
 
-    div.form-group
-      label.costumeAttr(for='size') Food size
-      input#size(type='text', name='size', value= costumesize )
+    - let actionid = "/resource/food/" + costumeid
+    form(id='FoodForm', action= actionid, method="PUT")
+      div.form-group
+        label(for='costume_type') Food type
+        input#costume_type(type='text', name='costume_type', value= costume_type, class='form-control')
 
-    div.form-group
-      label.costumeAttr(for='cost') Food cost
-      input#cost(type='number', name='cost', value= costumecost )
+      div.form-group
+        label(for='size') Food size
+        input#size(type='text', name='size', value= costumesize, class='form-control')
 
-    input(type="submit")
+      div.form-group
+        label(for='cost') Food cost
+        input#cost(type='number', name='cost', value= costumecost, class='form-control')
 
-    script.
-      document.forms['FoodForm'].addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO do something here to show the user that the form is being submitted
-        fetch(event.target.action, {
-          method: 'PUT',
-          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-        }).then((resp) => {
-          return resp.json(); // or resp.text() or whatever the server sends
-        }).then((body) => {
-          alert("Update succeeded");
-          // TODO handle body
-        }).catch((error) => {
-          // TODO handle error
-          alert("Update failed " + error);
+      button(type="submit", class='btn btn-primary') Update
+
+      script.
+        document.forms['FoodForm'].addEventListener('submit', (event) => {
+          event.preventDefault();
+          // TODO do something here to show the user that the form is being submitted
+          fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+          }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+          }).then((body) => {
+            alert("Update succeeded");
+            // TODO handle body
+          }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error);
+          });
         });
-      });
