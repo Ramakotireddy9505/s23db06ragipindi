@@ -2,23 +2,21 @@ extends layout
 
 block content
   h1= title
+  - let foods = results;
 
   div(class="container-fluid")
-    div(class="row")
-      - for(let i = 0; i < results.length; i++){
-        div(class="col-sm-2", style = 'cursor: pointer;', id = `res-${i}`)
-          p FoodName: #{results[i].costume_type}
-          p FoodCost: $#{results[i].cost}
-          p FoodSize: #{results[i].size}
+      each food in foods
+        - let destination = `dispatch("/food/update?id=${food._id}")`
+        div(class="col-sm-2")
+          p FoodName: #{food.costume_type}
+          p FoodCost: $#{food.cost}
+          p FoodSize: #{food.size}
+        button.btn.btn-sm.btn-primary.ml-1(onclick= destination) Update
+        br
+        br
 
-        script.
-          (function(index) {
-            document.getElementById(`res-${index}`).addEventListener('click', function() {
-              buy(index);
-            });
-          })(i);
-      - }
-    script.
-      function buy(index){
-        alert(`You purchased item ${index}`)
-      }
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }
+
