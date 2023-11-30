@@ -8,13 +8,10 @@ const accountSchema = new Schema({
     required: true,
     unique: true,
     trim: true,
-    minlength: 3,
-    maxlength: 20
+
   },
   password: {
-    type: String,
-    required: true,
-    minlength: 6  // You can adjust this based on your requirements
+    type: String
   }
 });
 
